@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Szczegóły filmu</title>
+</head>
+<body>
+    <h1><%= movie.title %></h1>
+
+    <% if (movie.poster_path) { %>
+        <img src="https://image.tmdb.org/t/p/w500/<%= movie.poster_path %>" alt="<%= movie.title %> Poster" style="width: 200px; height: auto; margin-bottom: 20px;">
+    <% } %>
+
+    <p><strong>Opis:</strong> <%= movie.overview %></p>
+    <p><strong>Data premiery:</strong> <%= movie.release_date %></p>
+    <p><strong>Ocena:</strong> <%= movie.vote_average %>/10</p>
+    <a href="/">Powrót</a>
+</body>
+</html>

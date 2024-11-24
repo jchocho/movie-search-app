@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/styles.css">
+    <title>Wyszukiwarka Filmów</title>
+</head>
+<body>
+    <h1>Wyszukiwarka Filmów</h1>
+    <form action="/search" method="get">
+        <input type="text" name="q" placeholder="Wpisz nazwę filmu" required>
+        <button type="submit">Szukaj</button>
+    </form>
+
+    <% if (movies && movies.length > 0) { %>
+        <ul>
+            <% movies.forEach(movie => { %>
+                <li>
+                    <a href="/movie/<%= movie.id %>">
+                        <% if (movie.poster_path) { %>
+                            <img src="https://image.tmdb.org/t/p/w500/<%= movie.poster_path %>" alt="<%= movie.title %> Poster" style="width: 100px; height: auto; margin-right: 10px;">
+                        <% } %>
+                        <%= movie.title %>
+                    </a>
+                </li>
+            <% }) %>
+        </ul>
+    <% } else if (movies) { %>
+        <p>Brak wyników wyszukiwania.</p>
+    <% } %>
+    
+</body>
+</html>
