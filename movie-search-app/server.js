@@ -27,7 +27,7 @@ app.get('/search', async (req, res) => {
         });
         res.render('index', { movies: response.data.results });
     } catch (error) {
-        console.error(error);
+        console.error('Błąd podczas wyszukiwania filmu:', error.response ? error.response.data : error.message);
         res.status(500).send('Błąd serwera');
     }
 });
@@ -41,13 +41,24 @@ app.get('/movie/:id', async (req, res) => {
                 language: 'pl'
             },
         });
-        res.render('details', { movie: response.data });
+
+        const movie = response.data;
+
+        if (!movie || !movie.title) {
+            throw new Error('Nie znaleziono filmu');
+        }
+
+        res.render('details', { movie });
     } catch (error) {
-        console.error(error);
+        console.error('Błąd przy pobieraniu szczegółów filmu:', error.response?.data || error.message);
         res.status(500).send('Błąd serwera');
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Serwer działa na http://localhost:${PORT}`);
-});
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Serwer działa na http://localhost:${PORT}`);
+    });
+}
+
+module.exports = app;
