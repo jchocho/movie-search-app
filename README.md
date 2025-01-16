@@ -1,8 +1,81 @@
-## Uruchomienie testów jednostkowych i integracyjnych
+# Akademia Tarnowska
+
+## Kurs
+
+Testowanie i Jakość Oprogramowania / Projekt
+
+## Autor
+
+Jakub Chochołowicz (https://github.com/jchocho)
+
+## Temat projektu
+Movie search app - Wyszukiwarka filmów
+
+## Opis projektu
+
+**Wyszukiwarka filmów** jest to aplikacja, która ma na celu wyszukiwanie filmów po ich tytułach. Oferuje również wejście w szczegóły wybranego filmu, takie jak opis filmu, data premiery i ocena.
+
+##  Uruchomienie projektu
+
+Sklonuj projekt
+
+```bash
+  git clone https://github.com/jchocho/movie-search-app.git
+```
+
+Przejdź do folderu z projektem
+
+```bash
+  cd movie-search-app
+```
+Zainstaluj zależności
+
+```bash
+  npm install
+```
+
+ Uruchom serwer
+
+```bash
+  npm start
+```
+
+## Testy
+
+### Testy jednostkowe
+
+```bash
+  \movie-search-app\test\unit\serverFunctions.test.js
+```
+
+### Testy integracyjne
+
+```bash
+  \movie-search-app\test\integration\movieRoutes.test.js
+```
+
+### Uruchomienie testów jednostkowych i integracyjnych
  
 ```bash
   npm test
 ```
+
+## Dokumentacja API
+
+### Strona główna
+- Adres: `/`
+- Typ: **GET**
+- Zwraca: Strona główna z wyszukiwarką filmów i pustymi wynikami.
+
+### Wyszukiwanie filmów
+- Adres: `/search`
+- Typ: **GET**
+- Zwraca: Strona główna z wyświetlonymi wynikami wyszukiwania dla danego filmu.
+
+### Szczegóły filmu
+- Adres: `/movie/:id`
+- Typ: **GET**
+- Zwraca: Strona z szczegółowymi informacjami o szukanym filmie.
 
 ## Scenariusze testowe dla testera manualnego
 | Test Case ID |  Opis  |	Kroki testowe	| Oczekiwany wynik|
@@ -17,3 +90,11 @@
 | TC_08   |  Test sprawdza, jak aplikacja obsługuje sytuację, gdy użytkownik próbuje zobaczyć szczegóły nieistniejącego filmu.  |  Wejdź na stronę główną aplikacji. Wprowadź nieistniejące ID filmu w pasku adresu, np. /movie/9999999.   | Aplikacja powinna wyświetlić stronę błędu |
 | TC_09   |  Test sprawdza, czy użytkownik może wyszukiwać film na podstawie oryginalnej nazwie.  |  Wejdź na stronę główną aplikacji. Wpisz „Inception” w pole wyszukiwania. Kliknij przycisk „Szukaj”.  | Wyświetlą się wyniki wyszukiwania dla filmu „Incepcja”. |
 | TC_10   |  Test sprawdza, czy użytkownik może wyszukiwać film na podstawie skróconej nazwy  |  Wejdź na stronę główną aplikacji. Wpisz „LOTR” w pole wyszukiwania. Kliknij przycisk „Szukaj”.  | Wyświetlą się wyniki wyszukiwania dla filmu „Władca Pierścieni”. |
+
+## Technologie użyte w projekcie
+- Node.js
+- Express.js
+- HTML
+- CSS
+- JavaScript
+- TMDB API
